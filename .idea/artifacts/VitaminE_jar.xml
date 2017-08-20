@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="VitaminE:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/VitaminE_jar</output-path>
+    <root id="archive" name="VitaminE.jar">
+      <element id="module-output" name="VitaminE" />
+      <element id="library" level="project" name="mapdb-3.0.5" />
+    </root>
+  </artifact>
+</component>
