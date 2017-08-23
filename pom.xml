@@ -44,7 +44,9 @@
                         </filter>
                     </filters>
 
-                    <finalName>uber-${artifactId}-${version}</finalName>
+                    <!--<finalName>uber-${artifactId}-${version}</finalName>-->
+                    <finalName>VE-3</finalName>
+
                 </configuration>
             </plugin>
 

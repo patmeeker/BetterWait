@@ -6,7 +6,15 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed0d3afe-3d7c-48f6-bc82-e279f8e3a1f1" name="Default" comment="" />
+    <list default="true" id="ed0d3afe-3d7c-48f6-bc82-e279f8e3a1f1" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/VitaminE-1.0-SNAPSHOT.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/uber-VitaminE-1.0-SNAPSHOT.jar" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/VitaminE_jar/VitaminE.jar" afterPath="$PROJECT_DIR$/out/artifacts/VitaminE_jar/VitaminE.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/sm1/SmartFluentWait.class" afterPath="$PROJECT_DIR$/target/classes/com/sm1/SmartFluentWait.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sm1/SmartFluentWait.java" afterPath="$PROJECT_DIR$/src/main/java/com/sm1/SmartFluentWait.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,11 +27,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SmartFluentWait.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SmartFluentWait.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sm1/SmartFluentWait.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="97">
-              <caret line="148" column="0" lean-forward="true" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+            <state relative-caret-position="459">
+              <caret line="296" column="19" lean-forward="false" selection-start-line="296" selection-start-column="19" selection-end-line="296" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -31,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+            <state relative-caret-position="399">
+              <caret line="47" column="35" lean-forward="false" selection-start-line="47" selection-start-column="35" selection-end-line="47" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -93,6 +101,7 @@
       <find>throwi</find>
       <find>thro</find>
       <find>thr</find>
+      <find>got</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -113,8 +122,8 @@
         <option value="$PROJECT_DIR$/src/SmartFluentWait.java" />
         <option value="$PROJECT_DIR$/src/com/sm1/SmartWebDriverWait.java" />
         <option value="$PROJECT_DIR$/src/com/sm1/SmartFluentWait.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/sm1/SmartFluentWait.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -794,14 +803,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/19.0/guava-19.0-sources.jar!/com/google/common/base/Throwables.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
@@ -812,11 +813,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sm1/SmartFluentWait.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="148" column="0" lean-forward="true" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+        <state relative-caret-position="459">
+          <caret line="296" column="19" lean-forward="false" selection-start-line="296" selection-start-column="19" selection-end-line="296" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="47" column="35" lean-forward="false" selection-start-line="47" selection-start-column="35" selection-end-line="47" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>

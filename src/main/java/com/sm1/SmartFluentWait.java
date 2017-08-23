@@ -3,6 +3,8 @@ package com.sm1;
 import org.openqa.selenium.*;
 
 
+import java.util.Iterator;
+import java.util.Map;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.TimeUnit;
 
@@ -13,7 +15,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
-import com.google.common.base.Throwables;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
@@ -146,9 +147,6 @@ public class SmartFluentWait<T> implements Wait<T> {
     }
 
 
-
-
-
     /**
      * Repeatedly applies this instance's input value to the given function until one of the following
      * occurs:
@@ -169,18 +167,24 @@ public class SmartFluentWait<T> implements Wait<T> {
     @Override
     public <V> V until(Function<? super T, V> isTrue) {
 
+        return smartUntil(isTrue, true);
+    }
+
+
+
+    private <V> V smartUntil(Function<? super T, V> isTrue, boolean doMap) {
+
         long end = clock.laterBy(timeout.in(MILLISECONDS));
         Throwable lastException;
         while (true) {
+
             try {
                 V value = isTrue.apply(input);
                 if (value != null && (Boolean.class != value.getClass() || Boolean.TRUE.equals(value))) {
 
-
-                    String locator = isTrue.toString();
-
-
-                    updateLocator(locator);
+                    if(doMap){
+                        updateLocator(isTrue.toString());
+                    }
 
                     return value;
                 }
@@ -190,7 +194,18 @@ public class SmartFluentWait<T> implements Wait<T> {
                 // cause of the timeout.
                 lastException = null;
             } catch (Throwable e) {
-                lastException = propagateIfNotIgnored(e);
+
+                if(doMap){
+
+                    System.out.println("Desired locator failed: " + isTrue.toString());
+                    System.out.println("Original message: " + e.getMessage());
+
+                    return tryAltLocator(isTrue);
+
+                }
+                else {
+                    lastException = propagateIfNotIgnored(e);
+                }
             }
 
             // Check the timeout after evaluating the function to ensure conditions
@@ -241,14 +256,52 @@ public class SmartFluentWait<T> implements Wait<T> {
     public void updateLocator(String locator){
 
         DB db = DBMaker.fileDB("SmartWait_Locators.db").make();
-        ConcurrentMap map = db.hashMap(locator).createOrOpen();
-        map.put(locator, "here");
+        ConcurrentMap<String,Long> map = db.hashMap(locator, Serializer.STRING, Serializer.LONG).createOrOpen();
+        map.put("sample locator", 1234L);
         db.close();
 
         System.out.println("updated locators for: " + locator);
 
 
     }
+
+    public <V> V tryAltLocator(Function<? super T, V> isTrue) {
+
+        System.out.println("Attempting to do SmartWait");
+
+        System.out.println("Getting stored locators for " + isTrue.toString());
+
+
+        // get the locators
+        DB db = DBMaker.fileDB("SmartWait_Locators.db").make();
+
+        ConcurrentMap<String, Long> map = db.hashMap(isTrue.toString(), Serializer.STRING, Serializer.LONG).createOrOpen();
+
+
+
+        // order by recent
+
+        // print
+        for (Iterator<ConcurrentMap.Entry<String, Long>> it = map.entrySet().iterator(); it.hasNext(); ) {
+            ConcurrentMap.Entry<String, Long> entry = it.next();
+
+            System.out.println("key: " + entry.getKey());
+            System.out.println("val: " + entry.getValue());
+
+
+//            if(entry.getKey().equals("test")) {
+//                it.remove();
+//            }
+        }
+
+        db.close();
+
+    return null;
+    }
+
+
+
+
 
 
 
