@@ -1,3 +1,4 @@
 com/sm1/SmartFluentWait.class
 com/sm1/SmartWebDriverWait.class
+com/sm1/Locators.class
 MissingDriverException.class

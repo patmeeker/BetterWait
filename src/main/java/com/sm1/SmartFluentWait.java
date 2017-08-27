@@ -182,8 +182,9 @@ public class SmartFluentWait<T> implements Wait<T> {
                 V value = isTrue.apply(input);
                 if (value != null && (Boolean.class != value.getClass() || Boolean.TRUE.equals(value))) {
 
-                    if(doMap){
-                        updateLocator(isTrue.toString());
+                    if(doMap && (value instanceof WebElement)){
+
+                        Locators.updateLocator((WebElement) value, isTrue.toString(), (WebDriver) input);
                     }
 
                     return value;
@@ -253,17 +254,9 @@ public class SmartFluentWait<T> implements Wait<T> {
         throw new TimeoutException(message, lastException);
     }
 
-    public void updateLocator(String locator){
-
-        DB db = DBMaker.fileDB("SmartWait_Locators.db").make();
-        ConcurrentMap<String,Long> map = db.hashMap(locator, Serializer.STRING, Serializer.LONG).createOrOpen();
-        map.put("sample locator", 1234L);
-        db.close();
-
-        System.out.println("updated locators for: " + locator);
 
 
-    }
+
 
     public <V> V tryAltLocator(Function<? super T, V> isTrue) {
 
@@ -303,24 +296,6 @@ public class SmartFluentWait<T> implements Wait<T> {
 
 
 
-
-
-
-
-//public void until(ExpectedCondition<WebElement> isTrue) {
-//            System.out.println("hey, it compiles!");
-//
-//                WebDriver driver = new ChromeDriver();
-//
-//            WebDriverWait wait = new WebDriverWait(driver, 10);
-//
-//
-//
-//
-//
-//            WebElement webElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("id")));
-//
-//    }
 
 
 
