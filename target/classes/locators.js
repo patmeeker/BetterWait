@@ -1,5 +1,71 @@
 
 
+
+
+
+function getContainsTextPath(element){
+
+    if(!childHasText(element)){
+
+            var content = element.innerText;
+            if(content){
+                content = content.trim();
+                    if(content.length > 0){
+
+                        var xpath = '//*[text()[contains(.,"' + content + '")]]';
+
+                        xpath = specify(xpath, element);
+
+                        return xpath;
+                    }
+            }
+    }
+    return '';
+}
+
+function specify(xpath, element){
+
+    var found = document.evaluate('count(' + root + xpathPart + ')', document, null, XPathResult.ANY_TYPE, null);
+    if(found.numberValue > 2) {
+
+
+
+    }
+
+    return xpath;
+
+}
+
+
+
+
+function childHasText(element){
+
+  var children = element.childNodes;
+
+  var hasText = false;
+
+  for (var i = 0; i < children.length; i++) {
+
+    var content = children[i].innerText;
+    if(content){
+        content = content.trim();
+            if(content.length > 0){
+                hasText = true;
+            }
+    }
+
+
+  }
+
+
+  return hasText;
+
+
+}
+
+
+
 function getTagNameOnlyPath(element) {
 
   try {
@@ -131,6 +197,8 @@ function getTextContainedPath(element) {
       return choice;
     }
 
+var backupLocators = new Object();
+backupLocators['nth-of-type'] = getTagNameOnlyPath(arguments[0]);
 
+return JSON.stringify(backupLocators);
 
-return JSON.stringify([{'css': getTagNameOnlyPath(arguments[0])}, {'contains': getTextContainedPath(arguments[0])}]);
